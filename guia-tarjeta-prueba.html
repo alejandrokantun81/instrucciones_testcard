@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cómo llenar la Tarjeta de Prueba · Guía</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green:   #8DC63F;
+  --green-d: #6fa82e;
+  --green-l: #a8d85a;
+  --black:   #1a1a1a;
+  --gray:    #444;
+  --gray-l:  #888;
+  --white:   #ffffff;
+  --off:     #f4f4f4;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background: var(--green);
+  color: var(--black);
+  overflow-x: hidden;
+}
+
+/* ══ HERO ══ */
+.hero {
+  background: var(--green);
+  padding: 64px 6vw 56px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: 'TARJETA DE PRUEBA';
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 5rem;
+  font-weight: 800;
+  color: rgba(0,0,0,0.055);
+  letter-spacing: 8px;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.hero-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 44px;
+}
+
+.hero-brand span {
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.45);
+}
+
+.hero-brand .dot { width:5px; height:5px; border-radius:50%; background:rgba(0,0,0,0.3); }
+
+.hero-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(3.8rem, 11vw, 9rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -1px;
+  color: var(--black);
+  margin-bottom: 28px;
+  animation: fadeUp 0.45s ease both;
+}
+
+.hero-title .pre {
+  display: block;
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.42);
+  margin-bottom: 6px;
+}
+
+.hero-desc {
+  background: var(--white);
+  border: 2px solid rgba(0,0,0,0.14);
+  padding: 18px 22px;
+  max-width: 540px;
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: var(--gray);
+  margin-bottom: 32px;
+  animation: fadeUp 0.45s 0.1s ease both;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--black);
+  color: var(--green);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 13px 28px;
+  text-decoration: none;
+  transition: background 0.18s, color 0.18s;
+  animation: fadeUp 0.45s 0.2s ease both;
+}
+
+.hero-cta:hover { background: var(--green-d); color: var(--white); }
+
+/* ══ SHARED ══ */
+section { padding: 72px 6vw; }
+
+.sec-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--green-d);
+  margin-bottom: 8px;
+}
+
+.sec-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--black);
+  margin-bottom: 6px;
+}
+
+/* ══ QUÉ ES — blanco ══ */
+.what-is {
+  background: var(--white);
+  border-top: 4px solid var(--black);
+}
+
+.what-is .sec-label { color: var(--green-d); }
+
+.what-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+  margin-top: 36px;
+}
+
+.what-text p { font-size: 0.98rem; line-height: 1.8; color: var(--gray); margin-bottom: 14px; }
+
+/* Mini-tarjeta réplica */
+.mini-card {
+  border: 2px solid var(--black);
+  background: var(--green);
+  overflow: hidden;
+}
+
+.mc-header {
+  background: var(--black);
+  padding: 11px 18px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mc-header span {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--green);
+  font-size: 0.95rem;
+}
+
+.mc-header .mc-brand { font-size: 0.72rem; opacity: 0.55; }
+
+.mc-body { padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; }
+
+.mc-step {
+  background: var(--white);
+  padding: 9px 14px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  border: 1px solid rgba(0,0,0,0.07);
+}
+
+.mc-step-lbl {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green-d);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.mc-step-txt {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--black);
+}
+
+/* ══ ENCABEZADO — verde ══ */
+.header-sec {
+  background: var(--green);
+  border-top: 4px solid var(--black);
+}
+
+.header-sec .sec-label { color: rgba(0,0,0,0.42); }
+.header-sec .sec-title { color: var(--black); }
+
+.fields-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+  margin-top: 36px;
+  background: var(--black);
+  border: 2px solid var(--black);
+}
+
+.field-card {
+  background: var(--white);
+  padding: 22px 24px;
+  transition: background 0.16s;
+}
+
+.field-card:hover { background: #f5ffe8; }
+
+.field-card .fc-tag {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--green-d);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.field-card .fc-tag::before {
+  content: '';
+  display: inline-block;
+  width: 3px; height: 11px;
+  background: var(--green);
+}
+
+.field-card h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--black);
+  margin-bottom: 8px;
+}
+
+.field-card p { font-size: 0.86rem; line-height: 1.7; color: var(--gray); margin-bottom: 10px; }
+
+.field-card .example {
+  background: var(--off);
+  border-left: 3px solid var(--green);
+  padding: 8px 12px;
+  font-size: 0.8rem;
+  color: var(--gray);
+  font-style: italic;
+}
+
+/* ══ LOS 4 PASOS — blanco ══ */
+.steps-sec {
+  background: var(--white);
+  border-top: 4px solid var(--black);
+}
+
+.steps-sec .sec-label { color: var(--green-d); }
+
+.steps-list {
+  margin-top: 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Cada bloque = sección verde de la tarjeta */
+.step-block {
+  background: var(--green);
+  border: 2px solid var(--black);
+  overflow: hidden;
+}
+
+.step-head {
+  padding: 16px 26px 0;
+}
+
+/* Etiqueta en tab negro — idéntica al "PASO 1: HIPÓTESIS" */
+.step-tab {
+  display: inline-block;
+  background: var(--black);
+  color: var(--green);
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 5px 13px;
+}
+
+/* Título grande — "Creemos que" */
+.step-phrase {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 800;
+  color: var(--black);
+  padding: 4px 26px 0;
+  line-height: 1.05;
+}
+
+/* Panel blanco — cuadro de texto de la tarjeta */
+.step-content {
+  background: var(--white);
+  margin: 14px 26px 0;
+  padding: 22px;
+  border: 1px solid rgba(0,0,0,0.09);
+}
+
+.step-content .prompt {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--green-d);
+  border-left: 4px solid var(--green);
+  padding-left: 11px;
+  margin-bottom: 14px;
+}
+
+.step-content p { font-size: 0.9rem; line-height: 1.8; color: var(--gray); margin-bottom: 10px; }
+.step-content p:last-of-type { margin-bottom: 0; }
+
+.do-dont {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+  margin-top: 16px;
+  background: var(--black);
+}
+
+.do-box, .dont-box {
+  padding: 15px 17px;
+  font-size: 0.84rem;
+  line-height: 1.65;
+}
+
+.do-box { background: #f2fce6; }
+.dont-box { background: #fff4f4; }
+
+.dd-lbl {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 7px;
+}
+
+.do-box .dd-lbl { color: var(--green-d); }
+.dont-box .dd-lbl { color: #b53030; }
+
+/* Ratings — mismo nivel que el borde inferior de la tarjeta */
+.step-ratings {
+  margin: 3px 26px 26px;
+  display: flex;
+  gap: 3px;
+  background: var(--black);
+}
+
+.rating-box {
+  background: var(--white);
+  flex: 1;
+  padding: 13px 16px;
+}
+
+.rb-title {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray-l);
+  margin-bottom: 5px;
+}
+
+.rb-desc { font-size: 0.8rem; line-height: 1.6; color: var(--gray); }
+
+/* Ejemplos extra paso 1 */
+.extra-examples {
+  margin: 3px 26px 0;
+  border: 1px solid rgba(0,0,0,0.09);
+  background: var(--white);
+}
+
+.ex-title {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray-l);
+  padding: 12px 18px 8px;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+}
+
+.ex-list { padding: 14px 18px; display: flex; flex-direction: column; gap: 10px; }
+
+.ex-item {
+  font-size: 0.86rem;
+  color: var(--gray);
+  line-height: 1.65;
+  padding-left: 12px;
+  border-left: 3px solid var(--green);
+}
+
+/* ══ TIPS — verde ══ */
+.tips-sec {
+  background: var(--green);
+  border-top: 4px solid var(--black);
+}
+
+.tips-sec .sec-label { color: rgba(0,0,0,0.4); }
+.tips-sec .sec-title { color: var(--black); }
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  margin-top: 36px;
+  background: var(--black);
+  border: 2px solid var(--black);
+}
+
+.tip-card {
+  background: var(--white);
+  padding: 22px;
+  transition: background 0.16s;
+}
+
+.tip-card:hover { background: #f5ffe8; }
+
+.tip-icon { font-size: 1.5rem; display: block; margin-bottom: 10px; }
+
+.tip-card h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--black);
+  margin-bottom: 7px;
+}
+
+.tip-card p { font-size: 0.84rem; line-height: 1.7; color: var(--gray); }
+
+/* ══ FOOTER ══ */
+footer {
+  background: var(--black);
+  padding: 32px 6vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+footer .logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--green);
+  letter-spacing: 1px;
+}
+
+footer p { font-size: 0.75rem; color: rgba(255,255,255,0.3); }
+
+/* ══ ANIMATIONS ══ */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(18px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 768px) {
+  .what-grid { grid-template-columns: 1fr; }
+  .fields-grid { grid-template-columns: 1fr; }
+  .tips-grid { grid-template-columns: 1fr; }
+  .do-dont { grid-template-columns: 1fr; }
+  .step-ratings { flex-direction: column; }
+  footer { flex-direction: column; text-align: center; }
+  .hero::after { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-brand">
+    <span>⊙ Strategyzer</span>
+    <div class="dot"></div>
+    <span>Guía de uso</span>
+  </div>
+
+  <h1 class="hero-title">
+    <span class="pre">Cómo llenar la</span>
+    Tarjeta<br>de Prueba
+  </h1>
+
+  <div class="hero-desc">
+    Una guía paso a paso para que la Alta Dirección valide iniciativas de diseño de procesos, onboarding, capacitación y KPIs con evidencia real antes de escalarlas a toda la organización.
+  </div>
+
+  <a href="#que-es" class="hero-cta">Ver la guía ↓</a>
+</section>
+
+
+<!-- ═══ QUÉ ES ═══ -->
+<section class="what-is" id="que-es">
+  <div class="sec-label reveal">¿Qué es esto?</div>
+  <h2 class="sec-title reveal">La Tarjeta de Prueba<br>en 30 segundos</h2>
+
+  <div class="what-grid">
+    <div class="what-text reveal">
+      <p>La <strong>Tarjeta de Prueba</strong> es una herramienta de Strategyzer que ayuda a la Alta Dirección a convertir decisiones estratégicas en experimentos concretos y medibles.</p>
+      <p>Antes de implementar un nuevo proceso, rediseñar el onboarding o lanzar un programa de capacitación a toda la organización, primero <strong>defines la hipótesis causa-efecto</strong>, diseñas un <strong>piloto acotado</strong>, estableces <strong>qué KPI medirás</strong> y defines <strong>cuándo tendrás evidencia suficiente</strong> para escalar.</p>
+      <p>El resultado: decisiones directivas respaldadas por datos, no por intuición ni por presión del entorno.</p>
+    </div>
+
+    <div class="mini-card reveal">
+      <div class="mc-header">
+        <span>Tarjeta de Prueba</span>
+        <span class="mc-brand">Strategyzer</span>
+      </div>
+      <div class="mc-body">
+        <div class="mc-step">
+          <span class="mc-step-lbl">Paso 1 · Hipótesis</span>
+          <span class="mc-step-txt">Creemos que…</span>
+        </div>
+        <div class="mc-step">
+          <span class="mc-step-lbl">Paso 2 · Prueba</span>
+          <span class="mc-step-txt">Para verificarlo…</span>
+        </div>
+        <div class="mc-step">
+          <span class="mc-step-lbl">Paso 3 · Métrica</span>
+          <span class="mc-step-txt">Y mediremos…</span>
+        </div>
+        <div class="mc-step">
+          <span class="mc-step-lbl">Paso 4 · Criterios</span>
+          <span class="mc-step-txt">Tenemos razón si…</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ ENCABEZADO ═══ -->
+<section class="header-sec">
+  <div class="sec-label reveal">Antes de empezar</div>
+  <h2 class="sec-title reveal">Los campos del encabezado</h2>
+
+  <div class="fields-grid">
+    <div class="field-card reveal">
+      <div class="fc-tag">Campo</div>
+      <h4>Nombre de la Prueba</h4>
+      <p>Un nombre corto y único que identifique la iniciativa que se está probando. Permite rastrear los experimentos a lo largo del ciclo de mejora continua de la organización.</p>
+      <div class="example">"Piloto de procedimiento de onboarding — Área Operaciones Q2"</div>
+    </div>
+    <div class="field-card reveal">
+      <div class="fc-tag">Campo</div>
+      <h4>Plazo Límite</h4>
+      <p>La fecha en la que la prueba debe estar completada y los resultados presentados a la dirección. Evita que el piloto se extienda indefinidamente sin conclusiones formales.</p>
+      <div class="example">"30 de junio, 2025"</div>
+    </div>
+    <div class="field-card reveal">
+      <div class="fc-tag">Campo</div>
+      <h4>Asignado a</h4>
+      <p>El directivo o gerente responsable de ejecutar y reportar la prueba. Solo una persona rinde cuentas para garantizar seguimiento puntual y rendición de resultados.</p>
+      <div class="example">"Gerencia de Capital Humano / Dirección de Operaciones"</div>
+    </div>
+    <div class="field-card reveal">
+      <div class="fc-tag">Campo</div>
+      <h4>Duración</h4>
+      <p>El período activo de recolección de datos del piloto. Distinto al plazo límite, que incluye el tiempo de análisis y presentación de resultados ante la dirección.</p>
+      <div class="example">"6 semanas de piloto con 2 áreas"</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ LOS 4 PASOS ═══ -->
+<section class="steps-sec" id="pasos">
+  <div class="sec-label reveal">El núcleo de la tarjeta</div>
+  <h2 class="sec-title reveal">Los 4 pasos explicados</h2>
+
+  <div class="steps-list">
+
+    <!-- PASO 1 -->
+    <div class="step-block reveal">
+      <div class="step-head">
+        <div class="step-tab">Paso 1: Hipótesis</div>
+      </div>
+      <div class="step-phrase">Creemos que…</div>
+
+      <div class="step-content">
+        <div class="prompt">"Al implementar [acción o intervención], se logrará [efecto esperado] en [área o proceso]."</div>
+        <p>La hipótesis directiva se redacta como una <strong>relación de causa y efecto</strong>: una acción organizacional produce un resultado medible. No es un objetivo ni una declaración de intención — es una suposición específica que puede confirmarse o refutarse con datos reales.</p>
+        <p>Una buena hipótesis nombra la intervención (procedimiento, programa de capacitación, rediseño de onboarding, sistema de KPIs), el área involucrada y el efecto esperado en términos operativos o de cumplimiento normativo.</p>
+        <div class="do-dont">
+          <div class="do-box">
+            <span class="dd-lbl">✅ Hazlo así</span>
+            "Al implementar procedimientos documentados y estandarizados para el proceso de compras, disminuirán las observaciones y no conformidades durante las auditorías internas en un 40%."
+          </div>
+          <div class="dont-box">
+            <span class="dd-lbl">❌ Evita esto</span>
+            "Creemos que mejorar los procesos es importante." — No establece causa ni efecto. No es medible ni refutable. No orienta ninguna acción directiva concreta.
+          </div>
+        </div>
+      </div>
+
+      <div class="extra-examples reveal">
+        <div class="ex-title">Más ejemplos de hipótesis causa-efecto</div>
+        <div class="ex-list">
+          <div class="ex-item">"Al estandarizar el proceso de onboarding con un manual estructurado, los nuevos colaboradores alcanzarán autonomía operativa en la mitad del tiempo actual."</div>
+          <div class="ex-item">"Al establecer KPIs por área y revisarlos en juntas quincenales, los líderes tomarán decisiones correctivas sin necesidad de escalar a la Dirección General."</div>
+          <div class="ex-item">"Al implementar un programa de capacitación técnica de 20 horas, se reducirán los errores operativos recurrentes en el área de producción en un 30%."</div>
+        </div>
+      </div>
+
+      <div class="step-ratings">
+        <div class="rating-box">
+          <span class="rb-title">⚠️ Crítico</span>
+          <div class="rb-desc">¿Qué tan estratégica es esta hipótesis? 1 triángulo = mejora operativa puntual. 3 triángulos = si la relación causa-efecto es falsa, la iniciativa estratégica completa está en riesgo.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASO 2 -->
+    <div class="step-block reveal">
+      <div class="step-head">
+        <div class="step-tab">Paso 2: Prueba</div>
+      </div>
+      <div class="step-phrase">Para verificarlo, nosotros…</div>
+
+      <div class="step-content">
+        <div class="prompt">"Para verificarlo, implementaremos [intervención] en [área piloto] durante [período] con [recursos asignados]."</div>
+        <p>Describe el experimento directivo concreto. La clave es elegir el alcance <em>más acotado posible</em> antes de escalar: una sola área piloto, un grupo reducido de colaboradores o un proceso específico.</p>
+        <p>Tipos de prueba en Alta Dirección: piloto en una sola área, prueba de procedimiento con equipo reducido, sesión de capacitación con grupo piloto, revisión de KPIs en ciclo corto, simulacro de auditoría con procedimientos nuevos.</p>
+        <div class="do-dont">
+          <div class="do-box">
+            <span class="dd-lbl">✅ Hazlo así</span>
+            "Implementaremos el nuevo procedimiento de onboarding en el área de Logística con los 5 ingresos programados para Q2, con seguimiento semanal del líder de área durante 6 semanas."
+          </div>
+          <div class="dont-box">
+            <span class="dd-lbl">❌ Evita esto</span>
+            "Capacitaremos a todo el personal." — Escalar sin pilotar impide aprender. Si el diseño falla, el error afecta a toda la organización y resulta más costoso corregir.
+          </div>
+        </div>
+      </div>
+
+      <div class="step-ratings">
+        <div class="rating-box">
+          <span class="rb-title">💰 Costo de la Prueba</span>
+          <div class="rb-desc">1 moneda = bajo costo (revisión de procedimiento con equipo actual). 3 monedas = alto costo (consultor externo, plataforma de e-learning). Prueba primero con recursos internos.</div>
+        </div>
+        <div class="rating-box">
+          <span class="rb-title">👍 Confiabilidad de Datos</span>
+          <div class="rb-desc">1 pulgar = percepción subjetiva (encuesta de satisfacción). 3 pulgares = comportamiento real observable (tiempo de autonomía, errores registrados, resultados de auditoría).</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASO 3 -->
+    <div class="step-block reveal">
+      <div class="step-head">
+        <div class="step-tab">Paso 3: Métrica</div>
+      </div>
+      <div class="step-phrase">Y mediremos…</div>
+
+      <div class="step-content">
+        <div class="prompt">"Y mediremos [KPI específico] en [área/proceso] durante [período de observación]."</div>
+        <p>Define exactamente qué indicador recolectarás y cómo se obtiene. El KPI debe estar directamente vinculado al efecto que plantea tu hipótesis causa-efecto y ser verificable sin interpretación subjetiva.</p>
+        <p>Evita medir actividades (cuántas capacitaciones se impartieron, cuántos procedimientos se redactaron). Enfócate en resultados: reducción de errores, tiempo de integración, cumplimiento en auditoría, decisiones correctivas tomadas sin escalar.</p>
+        <div class="do-dont">
+          <div class="do-box">
+            <span class="dd-lbl">✅ Hazlo así</span>
+            "Mediremos el número de observaciones en la auditoría interna del área piloto vs. el trimestre anterior, y el tiempo promedio que los nuevos ingresos tardan en operar sin supervisión directa."
+          </div>
+          <div class="dont-box">
+            <span class="dd-lbl">❌ Evita esto</span>
+            "Mediremos si los colaboradores están más comprometidos." — El compromiso no es una métrica. ¿Qué comportamiento observable y cuantificable lo evidenciaría?
+          </div>
+        </div>
+      </div>
+
+      <div class="step-ratings">
+        <div class="rating-box">
+          <span class="rb-title">⏱️ Tiempo Requerido</span>
+          <div class="rb-desc">1 reloj = días (revisión de KPIs en junta semanal). 2 relojes = semanas (ciclo de onboarding, capacitación). 3 relojes = meses (ciclo de auditoría, evaluación de desempeño). Alinea la métrica al ciclo natural del proceso.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASO 4 -->
+    <div class="step-block reveal">
+      <div class="step-head">
+        <div class="step-tab">Paso 4: Criterios</div>
+      </div>
+      <div class="step-phrase">Tenemos razón si…</div>
+
+      <div class="step-content">
+        <div class="prompt">"Tenemos razón si [KPI] alcanza [umbral específico] en [período], comparado con [línea base]."</div>
+        <p>Define <strong>antes de ejecutar el piloto</strong> el umbral numérico que confirmará que la hipótesis causa-efecto es válida. Establecerlo después de ver los resultados produce sesgo de confirmación, incluso en la Alta Dirección.</p>
+        <p>El umbral debe derivarse de la necesidad organizacional real: ¿qué mejora mínima justificaría invertir en escalar la iniciativa a toda la organización?</p>
+        <div class="do-dont">
+          <div class="do-box">
+            <span class="dd-lbl">✅ Hazlo así</span>
+            "Tenemos razón si el área piloto reduce sus observaciones de auditoría en al menos 35% respecto al trimestre anterior y si los nuevos ingresos alcanzan autonomía operativa en ≤ 3 semanas (vs. 6 semanas actuales)."
+          </div>
+          <div class="dont-box">
+            <span class="dd-lbl">❌ Evita esto</span>
+            "Tenemos razón si el equipo queda satisfecho con la capacitación." — La satisfacción no evidencia la hipótesis causa-efecto. Se necesita el número del resultado, no de la percepción.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══ TIPS ═══ -->
+<section class="tips-sec">
+  <div class="sec-label reveal">Antes de lanzar tu prueba</div>
+  <h2 class="sec-title reveal">6 reglas de oro</h2>
+
+  <div class="tips-grid">
+    <div class="tip-card reveal">
+      <span class="tip-icon">🎯</span>
+      <h4>Una hipótesis por tarjeta</h4>
+      <p>No mezcles varias iniciativas. Si pruebas onboarding y KPIs al mismo tiempo, no sabrás cuál de las dos generó el cambio observado.</p>
+    </div>
+    <div class="tip-card reveal">
+      <span class="tip-icon">🧪</span>
+      <h4>Pilota antes de escalar</h4>
+      <p>Implementa primero en una sola área. Si falla el diseño, el error no afecta a toda la organización ni consume el presupuesto completo.</p>
+    </div>
+    <div class="tip-card reveal">
+      <span class="tip-icon">🔒</span>
+      <h4>Define el criterio ANTES del piloto</h4>
+      <p>El sesgo de confirmación también afecta a la Alta Dirección. Si el umbral se define después de ver resultados, los criterios siempre "se cumplen".</p>
+    </div>
+    <div class="tip-card reveal">
+      <span class="tip-icon">📊</span>
+      <h4>Resultados, no actividades</h4>
+      <p>"Se entregaron 10 procedimientos" no es evidencia. La evidencia es: bajaron las no conformidades, mejoró el tiempo de integración, los KPIs se cumplen sin escalación.</p>
+    </div>
+    <div class="tip-card reveal">
+      <span class="tip-icon">🔄</span>
+      <h4>Un piloto fallido es aprendizaje</h4>
+      <p>Si el procedimiento no redujo errores, eso es información valiosa. El objetivo es descubrir qué funciona antes de comprometer recursos de toda la organización.</p>
+    </div>
+    <div class="tip-card reveal">
+      <span class="tip-icon">📁</span>
+      <h4>Documenta todas las pruebas</h4>
+      <p>Guarda las tarjetas, incluso las que no confirmaron la hipótesis. Con el tiempo construirás una base de decisiones que fortalece la gobernanza directiva.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="logo">Tarjeta de Prueba · Guía de Uso</div>
+  <p>Basado en la metodología de Strategyzer · Business Model Generation</p>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 65);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
